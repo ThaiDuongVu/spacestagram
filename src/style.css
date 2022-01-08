@@ -1,0 +1,18 @@
+img {
+    width: 40rem;
+    border-radius: 1rem;
+    border-style: none;
+}
+
+.icon {
+    font-size: x-large;
+}
+
+.message {
+    width: fit-content;;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    background-color: #eeeeee;
+
+    border-radius: 1rem;
+    border-style: none;
+}

@@ -1,9 +1,14 @@
 import React from 'react';
+import ImageDisplay from './ImageDisplay';
 import './bootstrap.css';
+import './style.css';
 
 const App = () => {
-  return(
-    <h1>Hello Spacestagram</h1>
+  return (
+    <div>
+      <br />
+      <ImageDisplay />
+    </div>
   );
 }
 
