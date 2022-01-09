@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
+import styles from './style.css';
 
 const ImageDisplay = () => {
   // API Key: 918p1dF8saIBXzpTzId02oTk3bIllwy5afp3BVdc
@@ -10,7 +11,7 @@ const ImageDisplay = () => {
 
   // Get and store data as a json object from NASA's API
   const [data, setData] = useState([]);
-  const getData = () => {
+  const getRandomizedData = () => {
     fetch('https://api.nasa.gov/planetary/apod?count=1&api_key=918p1dF8saIBXzpTzId02oTk3bIllwy5afp3BVdc')
       .then(response => response.json())
       .then(json => {
@@ -18,7 +19,7 @@ const ImageDisplay = () => {
         setLiked(likedImages && likedImages.includes(json[0].url));
       })
   }
-  useEffect(getData, []);
+  useEffect(getRandomizedData, []);
 
   // Helper function to display a message temporarily
   const [message, setMessage] = useState([]);
@@ -93,17 +94,14 @@ const ImageDisplay = () => {
 
           <div className='row'>
             <div className='col'>
-              <button type='button' className='btn btn-sm float-end' onClick={() => {
-                likeImage();
-              }}>
+              <button type='button' className='btn btn-sm float-end heart' data-toggle="tooltip" data-placement="bottom" title="Like image" onClick={() => { likeImage(); }}>
                 {/* Show different icons based on whether the image is liked */}
                 {liked ? <i className='bi bi-heart-fill icon'></i> : <i className='bi bi-heart icon'></i>}
               </button>
             </div>
 
-
             <div className='col'>
-              <button type='button' className='btn btn-sm float-start' onClick={() => {
+              <button type='button' className='btn btn-sm float-start' data-toggle="tooltip" data-placement="bottom" title="Share image" onClick={() => {
                 // Copy image url to clipboard
                 navigator.clipboard.writeText(data.url);
                 displayTempMessage('Image link copied to clipboard', 3000);
@@ -113,9 +111,7 @@ const ImageDisplay = () => {
             </div>
 
             <div className='col'>
-              <button type='button' className='btn btn-sm float-start' onClick={() => {
-                getData();
-              }}>
+              <button type='button' className='btn btn-sm float-start' data-toggle="tooltip" data-placement="bottom" title="Next image" onClick={() => { getRandomizedData(); }}>
                 <i className='bi bi-arrow-right-circle icon'></i>
               </button>
             </div>

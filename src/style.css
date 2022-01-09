@@ -5,7 +5,15 @@ img {
 }
 
 .icon {
-    font-size: large;
+    font-size: 1.5rem;
+}
+
+.icon:hover {
+    animation: 0.5s pop linear infinite;
+}
+
+.heart:active {
+    animation: 0.5s like linear;
 }
 
 .message {
@@ -15,4 +23,16 @@ img {
 
     border-radius: 1rem;
     border-style: none;
+}
+
+@keyframes like {
+    0% { }
+    25% { color: red; }
+    100% { }
+}
+
+@keyframes pop {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
 }
