@@ -1,7 +1,15 @@
+body {
+    overflow-x: hidden;
+}
+
 img {
     width: 40rem;
     border-radius: 1rem;
     border-style: none;
+}
+
+img:hover {
+    animation: 0.5s pop linear infinite;
 }
 
 .icon {
@@ -9,7 +17,7 @@ img {
 }
 
 .icon:hover {
-    animation: 0.5s pop linear infinite;
+    animation: 0.5s fade linear infinite;
 }
 
 .heart:active {
@@ -26,13 +34,19 @@ img {
 }
 
 @keyframes like {
-    0% { }
-    25% { color: red; }
-    100% { }
+    0% { color: red; }
+    50% { }
+    100% { color: red; }
 }
 
-@keyframes pop {
+@keyframes fade {
     0% { opacity: 1; }
     50% { opacity: 0.5; }
     100% { opacity: 1; }
+}
+
+@keyframes pop {
+    0% { margin-top: 0; }
+    50% { margin-top: -0.5rem; margin-bottom: 0.5rem; }
+    100% { margin-top: 0; }
 }

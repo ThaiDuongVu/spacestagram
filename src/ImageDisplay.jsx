@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
-import styles from './style.css';
 
 const ImageDisplay = () => {
   // API Key: 918p1dF8saIBXzpTzId02oTk3bIllwy5afp3BVdc
   // Example Request: https://api.nasa.gov/planetary/apod?api_key=918p1dF8saIBXzpTzId02oTk3bIllwy5afp3BVdc
 
-  const [cookies, setCookie, removeCookie] = useCookies(['likedImages']);
+  const [cookies, setCookie] = useCookies(['likedImages']);
   var likedImages = cookies.likedImages;
 
   // Get and store data as a json object from NASA's API
@@ -75,6 +74,7 @@ const ImageDisplay = () => {
       return (
         <div>
           <h3 className='text-center'>{data.title}</h3>
+          <br />
           <div className='text-center mx-auto'>
             <img className='img-fluid' src={data.url} onClick={(event) => {
               if (event.detail == 2) likeImage();
